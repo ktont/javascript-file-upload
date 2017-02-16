@@ -1,20 +1,23 @@
 # javascript文件上传
 
-## 1、原生的上传文件，使用form实现
+本程序需要安装node
+node官网
+http://nodejs.org/download/
+国内的用户可以访问山寨网站
+http://lodejs.org/download/
+安装好node后，就可以了
 
-首先，来看第一个例子。
-它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是观察http协议的格式。
-
-前端index.html，使用一个input标签进行文件选择，然后使用form表单发送数据。
-后端server.js（没错～后端程序也由我们编写），对表单发过来的数据进行解析，并用便于观察的方式打印出来。
-
-本程序需要安装node，启动的方式
-
+启动的方式
 ~~~bash
 windows
-c:\> node jsupload\demo1\server.js
+下载zip文件，然后解压到c盘
+c:\> cd javascript-file-upload-master
+c:\> node demo1\server.js
+
 linux or mac
-$ sudo node jsupload/demo1/server.js
+$ git clone https://github.com/ktont/javascript-file-upload
+$ cd javascript-file-upload
+$ sudo node demo1/server.js
 ~~~
 
 类推，运行demo2的时候
@@ -30,6 +33,14 @@ http://localhost
 ~~~bash
 $ node server.js 3000
 ~~~
+
+## 1、原生的上传文件，使用form实现
+
+首先，来看第一个例子。
+它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是观察http协议的格式。
+
+前端index.html，使用一个input标签进行文件选择，然后使用form表单发送数据。
+后端server.js（没错～后端程序也由我们编写），对表单发过来的数据进行解析，并用便于观察的方式打印出来。
 
 TIP: 观察。注意这个词。它是我们本次学习之旅的主要方法。你一定要运行每个例子，亲眼看到它们的结果。
 
@@ -65,10 +76,10 @@ plupload有四个安装等级 － 初级，中级，高级，长级
       打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
       所以plupload其实是在moxie的基础上，封装了一下
 * 高级，它依赖
-      ** jquery       137k
-      ** jquery ui    282k
-      ** plupload     123k
-      ** plupload ui  30k
+      jquery       137k
+      jquery ui    282k
+      plupload     123k
+      plupload ui  30k
       一共约600k的大小
 * 长级，它和高级差不多，也是实现一套ui。区别是ui是队列，前者的ui是块和列表。
 
