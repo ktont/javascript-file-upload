@@ -75,6 +75,7 @@ __TIP__: 观察。注意这个词。它是我们本次学习之旅的主要方�
 
 ## <a name="demo2"></a>2、plupload的原理
 plupload是一个文件上传的前端插件。
+
 [它的主页](http://www.plupload.com) [它的github地址](https://github.com/moxiecode/plupload)
 
 demo2这个例子呢，用来说明plupload的原理。它并没有使用plupload，而是使用XMLHttpRequest发送文件。
@@ -82,8 +83,8 @@ demo2这个例子呢，用来说明plupload的原理。它并没有使用pluploa
 
 plupload的原理，就是拿到文件句柄后，自己发送文件。然后就控制整个过程，从中加入自己实现的功能。
 
-比如，图片预览，是在拿到文件以后在新的canvas上画出新的尺寸。
-比如，断点续传，是在拿到文件以后slice文件，从断点处开始读取。
+* 比如，图片预览，是在拿到文件以后在新的canvas上画出新的尺寸。
+* 比如，断点续传，是在拿到文件以后slice文件，从断点处开始读取。
 
 这些操作，都又个前提，就是要拿到文件。否则，一切就无从谈起。
 
