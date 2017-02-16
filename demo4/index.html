@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo 4</title>
+</head>
+<body>
+
+<ul id="filelist"></ul>
+
+<div id="container">
+    <a id="file-picker" href="javascript:;">Browse...</a>
+</div>
+
+<script src="moxie.min.js"></script>
+<script>
+    var fileInput = new moxie.file.FileInput({
+        browse_button: 'file-picker', // or document.getElementById('file-picker')
+        accept: [
+            {title: "Images", extensions: "jpg,gif,png"} // accept only images
+        ],
+        multiple: true
+    });
+
+    function upload(file) {
+        var xhr = new moxie.xhr.XMLHttpRequest();
+        var formData = new moxie.xhr.FormData();
+        xhr.open("post", '/upload');
+        formData.append('myimagefile', file);
+        xhr.send(formData); 
+        xhr.upload.addEventListener('progress', function(stat) {
+            var p = document.createElement('p');
+            console.log(stat.loaded, stat.total);
+            p.innerHTML = [
+                new Date().toString().split(' ')[4],
+                file.name,
+                parseInt(stat.loaded*100/stat.total)+'%'
+            ].join(' ');
+            document.body.appendChild(p);
+        });
+   }
+
+    fileInput.onchange = function(e) {
+        // do something to files array
+        var ulRef = document.getElementById('filelist');
+        e.target.files.forEach(function(file) {
+            var liRef = document.createElement('li');
+            liRef.innerHTML = `
+                <span class="preview"></span>
+                <span class="name"> ${file.name}</span>
+                <span class="size">, ${file.size} bytes</span>
+            `;
+            var img = new moxie.image.Image();
+            img.onload = function() {
+                var thumb = liRef.getElementsByClassName('preview');
+                this.embed(thumb[0], {
+                    width: "50",
+                    height: "50",
+                    preserveHeaders: false
+                });
+            };
+            img.load(file);
+            ulRef.appendChild(liRef);
+            ////////////////////
+            upload(file);
+        });
+    };
+
+    fileInput.init(); // initialize
+</script>
+</body>
+</html>

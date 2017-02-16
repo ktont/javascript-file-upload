@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo 5</title>
+</head>
+<body>
+
+<ul id="filelist"></ul>
+
+<div id="container">
+    <a id="file-picker" href="javascript:;">Browse...</a>
+</div>
+
+<button id='stop' >stop</button>
+<button id='start'>start</button>
+
+<script src="moxie.min.js"></script>
+<script src="plupload.min.js"></script>
+<script>
+var uploader = new plupload.Uploader({
+    browse_button: 'file-picker',
+    url: '/upload',
+    filters : {
+        mime_types: [
+            {title : "Image files", extensions : "jpg,gif,png"}
+        ]
+    }
+});
+
+uploader.init();
+
+uploader.bind('FilesAdded', function(up, files) {
+    var ulRef = document.getElementById('filelist');
+    plupload.each(files, function(file) {
+        var liRef = document.createElement("li");
+        liRef.setAttribute('id', file.id);
+        liRef.innerHTML = `<span class="preview"></span>${file.name} <b></b>`;
+
+        var img = new moxie.image.Image();
+        img.onload = function() {
+            var thumb = liRef.getElementsByClassName('preview');
+            this.embed(thumb[0], {
+                width: "50",
+                height: "50",
+                preserveHeaders: false
+            });
+        };
+        img.load(file.getSource());
+        ulRef.appendChild(liRef);
+    });
+    up.start();
+});
+
+uploader.bind('UploadProgress', function(up, file) {
+    document.getElementById(file.id)
+    .getElementsByTagName('b')[0]
+    .innerHTML = '<span>' + file.percent + "%</span>";
+});
+
+window.onload = function() {
+    var start = document.getElementById('start');
+    var stop = document.getElementById('stop');
+    start.addEventListener('click', function(e) {
+        uploader.start();
+    });
+    stop.addEventListener('click', function(e) {
+        uploader.stop();
+    });
+}
+</script>
+</body>
+</html>

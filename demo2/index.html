@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo 2</title>
+</head>
+<body>
+    <input type="file" id="picker" />
+    <img id="image" />
+    <script>
+        window.onload = function() {
+            document.getElementById("picker").onchange = function () {
+                var file = this.files[0];
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function(d) {
+                    document.getElementById("output")
+                    .innerText = d.currentTarget.response;
+                };
+                xhr.onerror = function(err) {
+                    document.getElementById("output")
+                    .innerText = 'error';
+                };
+                xhr.open('POST', '/upload');
+                var fd = new window.FormData();
+                fd.append('file', file);
+                xhr.send(fd);
+            };
+        };
+    </script>
+    <pre id="output"></pre>
+</body>
+</html>
