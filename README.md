@@ -1,13 +1,13 @@
 # javascript文件上传
 
 ## 目录
-> demo1 原生的上传文件，使用form实现
-> demo2 plupload的原理
-> demo3 moxie文件选取fill-picker，带有预览功能
-> demo4 上一个基础上，增加了文件上传，带有上传百分比通知
-> demo5 使用plupload实现了图片上传
-> demo6 断点续传
-> demo7 plupload ui widget的示例
+> #### demo1 原生的上传文件，使用form实现
+> #### demo2 plupload的原理
+> #### demo3 moxie文件选取fill-picker，带有预览功能
+> #### demo4 上一个基础上，增加了文件上传，带有上传百分比通知
+> #### demo5 使用plupload实现了图片上传
+> #### demo6 断点续传
+> #### demo7 plupload ui widget的示例
 
 本程序需要安装node
 ~~~
