@@ -4,7 +4,7 @@
 
 [Link-name2](#aaa)
 
-> #### [demo1 原生的上传文件，使用form实现](#1、原生的上传文件，使用form实现)
+> #### [demo1 原生的上传文件，使用form实现](#demo1)
 > #### demo2 plupload的原理
 > #### demo3 moxie文件选取fill-picker，带有预览功能
 > #### demo4 上一个基础上，增加了文件上传，带有上传百分比通知
@@ -51,7 +51,7 @@ http://localhost
 $ node server.js 3000
 ~~~
 
-## 1、原生的上传文件，使用form实现
+## <a name="demo1"></a>1、原生的上传文件，使用form实现
 
 首先，来看第一个例子。
 它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是观察http协议的格式。
