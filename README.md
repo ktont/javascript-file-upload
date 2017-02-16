@@ -52,24 +52,25 @@ demo2这个例子呢，用来说明plupload的原理。它并没有使用pluploa
 最重要的一段话如下，我跟你一样，一开始读不懂。
 其实我写本文的本来动力，也会为了读懂这四句话。
 
-Low-level pollyfills (mOxie) - have their own code base and documentation on GitHub.
-Plupload API
-UI Widget
-Queue Widget
+* Low-level pollyfills (mOxie) - have their own code base and documentation on GitHub.
+* Plupload API
+* UI Widget
+* Queue Widget
 
 这四句话的意思是
 plupload有四个安装等级 － 初级，中级，高级，长级
 
-初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见“编译moxie”一节）
-中级，plupload.full.min.js，插件大小123k
+* 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见“编译moxie”一节）
+* 中级，plupload.full.min.js，插件大小123k
       打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
       所以plupload其实是在moxie的基础上，封装了一下
-高级，它依赖
-      jquery       137k
-      jquery ui    282k
-      plupload     123k
-      plupload ui  30k
+* 高级，它依赖
+      ** jquery       137k
+      ** jquery ui    282k
+      ** plupload     123k
+      ** plupload ui  30k
       一共约600k的大小
+* 长级，它和高级差不多，也是实现一套ui。区别是ui是队列，前者的ui是块和列表。
 
 那么回过头，来看这个例子。这个例子只是演示文件选择，它没有上传的功能。
 只有文件选择功能的moxie插件的大小为77k，比正常功能要小30%。
@@ -89,9 +90,11 @@ plupload有四个安装等级 － 初级，中级，高级，长级
 # 6、断点续传
 
 这次服务器的启动时，需要一个“百分比”的参数
+~~~bash
 $ node server.js 50%
 如果同时你还要指定端口号，那么
 $ node server.js 3000 50%
+~~~
 
 你可能会误认为服务器会从50%的地方把数据存起来，不是的，
 它的意思是告诉客户端，“请从50%的地方把剩下的文件数据发送过来“。
