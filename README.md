@@ -78,10 +78,12 @@ plupload是一个文件上传的前端插件。
 
 [它的主页](http://www.plupload.com) [它的github地址](https://github.com/moxiecode/plupload)
 
-demo2这个例子呢，用来说明plupload的原理。它并没有使用plupload，而是使用XMLHttpRequest发送文件。
-它相当于plupload的v0.01版本。
+demo2并没有使用plupload，事实上它是自己实现了plupload，它本身就相当于plupload的v0.01版本。
 
-plupload的原理，就是拿到文件句柄后，自己发送文件。然后就控制整个过程，从中加入自己实现的功能。
+通过v0.01，这20行代码来一窥plupload的原理。而不是去读plupload的上万行代码，
+真是有种两岸猿声啼不住，轻舟已过万重山的感觉呀。
+
+plupload的原理，就是拿到文件句柄后，自己发送i(XMLHttpRequest)文件。然后就控制整个过程，从中加入自己实现的功能。
 
 * 比如，图片预览，是在拿到文件以后在新的canvas上画出新的尺寸。
 * 比如，断点续传，是在拿到文件以后slice文件，从断点处开始读取。
