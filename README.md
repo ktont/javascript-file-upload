@@ -1,11 +1,13 @@
 # javascript文件上传
 
 本程序需要安装node
+~~~
 node官网
 http://nodejs.org/download/
 国内的用户可以访问山寨网站
 http://lodejs.org/download/
-安装好node后，就可以了
+~~~
+安装好node后，就可以了。
 
 启动的方式
 ~~~bash
@@ -20,15 +22,16 @@ $ cd javascript-file-upload
 $ sudo node demo1/server.js
 ~~~
 
-类推，运行demo2的时候
-去执行demo2下的server.js就可以了
+类推，运行demo2的时候，去执行demo2下的server.js就可以了。
 
 然后在浏览器中执行
+~~~
 http://localhost
+~~~
 就可以了。
 
 如果你遇到EADDRINUSE的错误，那是因为80端口已经被其它诸如apache、nginx的程序占用了。
-可以在启动的时候指定端口, 比如端口3000
+可以在启动的时候指定端口, 比如端口3000。
 
 ~~~bash
 $ node server.js 3000
