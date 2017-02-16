@@ -75,13 +75,17 @@ __TIP__: 观察。注意这个词。它是我们本次学习之旅的主要方�
 
 ## <a name="demo2"></a>2、plupload的原理
 plupload是一个文件上传的前端插件。
-它的主页
-http://www.plupload.com/
-github地址
-https://github.com/moxiecode/plupload
+[它的主页](http://www.plupload.com) [它的github地址](https://github.com/moxiecode/plupload)
 
 demo2这个例子呢，用来说明plupload的原理。它并没有使用plupload，而是使用XMLHttpRequest发送文件。
 它相当于plupload的v0.01版本。
+
+plupload的原理，就是拿到文件句柄后，自己发送文件。然后就控制整个过程，从中加入自己实现的功能。
+
+比如，图片预览，是在拿到文件以后在新的canvas上画出新的尺寸。
+比如，断点续传，是在拿到文件以后slice文件，从断点处开始读取。
+
+这些操作，都又个前提，就是要拿到文件。否则，一切就无从谈起。
 
 ## <a name="demo3"></a>3、moxie文件选取fill-picker，带有预览功能
 当你看到moxie的时候，可能会觉得莫名其妙。是这样的
@@ -138,6 +142,9 @@ $ node server.js 3000 50%
 它的意思是告诉客户端，“请从50%的地方把剩下的文件数据发送过来“。
 
 客户端在发送数据前，询问服务器，上次传送的百分比。然后从这个百分比处发送剩下的数据。
+
+
+这里的内容较多。。待补。先放一句“线索在这儿”，断点续传的原理是参数chunk_size。
 
 ## <a name="demo7"></a>7、plupload ui widget的示例
 
