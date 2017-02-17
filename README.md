@@ -75,7 +75,7 @@ $ node server.js 3000
 上传完成后
 
 <kdb>
-<img src="img/1.4.png" width="450">
+<img src="img/1.4.png" width="450"／>
 </kdb>
 
 __TIP__: 观察。注意这个词。它是我们本次学习之旅的主要方法。你一定要运行每个例子，亲眼看到它们的结果。
