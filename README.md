@@ -55,11 +55,13 @@ $ node server.js 3000
 </kbd>
 
 在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程。打开debugger
+
 <kdb>
 <img src="img/1.2.png" width="300">
 </kdb>
 
 点击后，选取一个较慢的
+
 <kdb>
 <img src="img/1.22.png" width="200">
 </kdb>
@@ -71,7 +73,10 @@ $ node server.js 3000
 你可以调试它，用来学习http协议。
 
 上传完成后
-<kdb><img src="img/1.4.png" width="450"></kdb>
+
+<kdb>
+<img src="img/1.4.png" width="450">
+</kdb>
 
 __TIP__: 观察。注意这个词。它是我们本次学习之旅的主要方法。你一定要运行每个例子，亲眼看到它们的结果。
 它们发生了、产生结果了，你眼见为实了、反复的确认后，就熟悉了这个技术。
