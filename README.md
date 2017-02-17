@@ -2,24 +2,19 @@
 
 ## 目录
 
-> [demo1 原生的上传文件，使用form实现](#demo1)   
+> [demo1 form表单，原生的上传文件](#demo1)   
 > [demo2 plupload的原理](#demo2)  
-> [demo3 moxie文件选取，fill-picker，带有预览功能](#demo3)   
-> [demo4 上一个基础上，增加了文件上传，带有上传百分比通知](#demo4)   
+> [demo3 moxie文件选取和文件预览](#demo3)   
+> [demo4 上一个基础上，增加了文件上传，进度提示](#demo4)   
 > [demo5 使用plupload实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload ui widget的示例](#demo7)   
 
-本程序需要安装node
-~~~
-node官网
-http://nodejs.org/download/
-国内的用户可以访问山寨网站
-http://lodejs.org/download/
-~~~
+本教程包含7个demo，它们循序渐进、由浅入深地讲解文件上传。每个demo都是被精心设计的，且都是可执行的。
 
-本教程包含7个demo，安装好node后，就可以挨个运行它们了。
-~~~bash
+请先 [安装node](http://nodejs.org/download/) ，已经装过请忽略。
+
+~~~
 windows
 下载zip文件，然后解压到c盘
 c:\> cd javascript-file-upload-master
@@ -31,22 +26,21 @@ $ cd javascript-file-upload
 $ sudo node demo1/server.js
 ~~~
 
-类推，运行demo2的时候，去执行demo2下的server.js就可以了。
+类推，运行demo2的时候，去执行demo2下的server.js。
 
-然后在浏览器中(建议chrome)执行
+然后在浏览器中(建议chrome)打开
 ~~~
 http://localhost
 ~~~
-就可以了。
 
-如果你遇到EADDRINUSE的错误，那是因为80端口已经被其它诸如apache、nginx的程序占用了。
+如果你遇到EADDRINUSE的错误，那是因为80端口已经被其它诸如apache、nginx的进程占用了。
 可以在启动的时候指定端口, 比如端口3000。
 
 ~~~bash
 $ node server.js 3000
 ~~~
 
-## <a name="demo1"></a>1、原生的上传文件，使用form实现
+## <a name="demo1"></a>1、form表单，原生的上传文件
 
 首先，来看第一个例子。
 它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是观察http协议的格式。
@@ -55,12 +49,14 @@ $ node server.js 3000
 后端server.js（没错～后端程序也由我们编写），对表单发过来的数据进行解析，并用便于观察的方式打印出来。
 
 点击 选择文件 后
-![1.1.png](img/1.1.png)
+<kbd>
+![](img/1.1.png)
+</kbd>
 
 在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程
-![](img/1.2.png)
+![](img/1.2.png =100x)
 点击后，选取
-![](img/1.22.png)
+![](img/1.22.png = 50x)
 
 服务端会打印下面的提示，注意红框中的token，它用来表示二进制数据的边界。
 ![](img/1.3.png)
@@ -123,7 +119,7 @@ plupload有四个安装等级 － 初级，中级，高级，长级
 
 ## <a name="demo4"></a>4、上一个基础上，增加了文件上传，带有上传百分比通知
 
-## <a name="demo5"></a>5、使用plupload实现了图片上传。
+## <a name="demo5"></a>5、使用plupload实现了图片上传
 
 这个例子，比较实际一点，使用plupload。plupload主要在moxie上实现一套事件驱动的机制。
 同时，顺带演习上传的暂停和重传。为甚么在这里演习暂停和重传呢？因为为了区分下面的断点续传。
