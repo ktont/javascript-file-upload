@@ -49,22 +49,24 @@ $ node server.js 3000
 后端server.js（没错～后端程序也由我们编写），对表单发过来的数据进行解析，并用便于观察的方式打印出来。
 
 点击 选择文件 后
+
 <kbd>
-![](img/1.1.png)
+<img src="img/1.1.png" width="600">
 </kbd>
 
 在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程
-![](img/1.2.png =100x)
-点击后，选取
-![](img/1.22.png = 50x)
+<kdb><img src="img/1.2.png" width="200"></kdb>
+点击后，选取一个较慢的
+<kdb><img src="img/1.22.png" width="100"></kdb>
 
 服务端会打印下面的提示，注意红框中的token，它用来表示二进制数据的边界。
-![](img/1.3.png)
+<kdb><img src="img/1.3.png" width="400"></kdb>
+
 你在server.js中可以看到解析http数据的formidable函数。
 你可以调试它，用来学习http协议。
 
 上传完成后
-![](img/1.4.png)
+<kdb><img src="img/1.4.png" width="450"></kdb>
 
 __TIP__: 观察。注意这个词。它是我们本次学习之旅的主要方法。你一定要运行每个例子，亲眼看到它们的结果。
 它们发生了、产生结果了，你眼见为实了、反复的确认后，就熟悉了这个技术。
