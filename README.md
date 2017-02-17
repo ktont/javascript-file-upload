@@ -53,21 +53,15 @@ $ node server.js 3000
 
 点击 选择文件 后
 
-<kbd>
 <img src="img/1.1.png" width="500">
-</kbd>
 
 在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程。打开debugger
 
-<kdb>
 <img src="img/1.2.png" width="300">
-</kdb>
 
 点击后，选取一个较慢的
 
-<kdb>
 <img src="img/1.22.png" width="200">
-</kdb>
 
 服务端会打印下面的提示，注意红框中的token，它用来表示二进制数据的边界。
 <img src="img/1.3.png" width="400">
@@ -122,14 +116,13 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 
 * 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见“编译moxie”一节）
 * 中级，plupload.full.min.js，插件大小123k
-      打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
-      所以`plupload`其实是在moxie的基础上，封装了一下
-* 高级，它依赖
-      jquery       137k
-      jquery ui    282k
-      plupload     123k
-      plupload ui  30k
-      一共约600k的大小
+>      打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
+>      所以`plupload`其实是在moxie的基础上，封装了一下
+* 高级，它依赖下面库，一共约600k的大小
+>      jquery       137k
+>      jquery ui    282k
+>      plupload     123k
+>      plupload ui  30k
 * 长级，它和高级差不多，也是实现一套ui。区别是ui是队列，前者的ui是块和列表。
 
 那么回过头，来看这个例子。这个例子只是演示文件选择，它没有上传的功能。
