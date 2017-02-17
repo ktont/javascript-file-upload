@@ -51,16 +51,21 @@ $ node server.js 3000
 点击 选择文件 后
 
 <kbd>
-<img src="img/1.1.png" width="600">
+<img src="img/1.1.png" width="500">
 </kbd>
 
-在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程
-<kdb><img src="img/1.2.png" width="200"></kdb>
+在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程。打开debugger
+<kdb>
+<img src="img/1.2.png" width="300">
+</kdb>
+
 点击后，选取一个较慢的
-<kdb><img src="img/1.22.png" width="100"></kdb>
+<kdb>
+<img src="img/1.22.png" width="200">
+</kdb>
 
 服务端会打印下面的提示，注意红框中的token，它用来表示二进制数据的边界。
-<kdb><img src="img/1.3.png" width="400"></kdb>
+<img src="img/1.3.png" width="400">
 
 你在server.js中可以看到解析http数据的formidable函数。
 你可以调试它，用来学习http协议。
