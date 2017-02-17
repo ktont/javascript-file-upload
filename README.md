@@ -57,7 +57,7 @@ $ node server.js 3000
 
 在点击 Upload 按钮之前，对网络进行限速，方便观察数据传输的过程。打开debugger
 
-<img src="img/1.2.png" width="300">
+<img src="img/1.2.png" width="500">
 
 点击后，选取一个较慢的
 
