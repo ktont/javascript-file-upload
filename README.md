@@ -102,6 +102,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 ## <a name="demo3"></a>3、moxie文件选取和文件预览
 
 这个例子没有服务端，请直接用浏览器打开 `demo3/index.html`
+
 当你看到moxie的时候，可能会觉得莫名其妙。是这样的
 
 打开 http://www.plupload.com/docs/
