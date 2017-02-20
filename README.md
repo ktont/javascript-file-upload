@@ -5,7 +5,7 @@
 > [demo1 form表单，原生的上传文件](#demo1)   
 > [demo2 plupload的原理](#demo2)  
 > [demo3 moxie文件选取和文件预览](#demo3)   
-> [demo4 上一个基础上，增加了文件上传，进度提示](#demo4)   
+> [demo4 moxie文件上传，进度提示](#demo4)   
 > [demo5 使用plupload实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload ui widget的示例](#demo7)   
@@ -125,7 +125,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 这四句话的意思是
 `plupload`有四个安装等级 － 初级，中级，高级，长级
 
-* 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见“编译moxie”一节）。
+* 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见 [编译moxie](docs/compile.md) 一节）。
     其中提到的pollyfills应为**polyfiles**，是帮助老浏览器跟上h5步伐的插件，叫“h5垫片”，用js提升老浏览器的api，抹平浏览器间的差异。所以moxie其实是个通用前端库。
 * 中级，plupload.full.min.js，插件大小123k
       打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
@@ -138,15 +138,14 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
       一共约600k的大小。帮助你实现ui，叫widget － 小组件。
 * 长级，它和高级差不多，也是实现一套ui。区别是ui是队列，前者的ui是块和列表。
 
-
 那么回过头，再来看这个例子。这个例子只是演示文件选择，它没有上传的功能。
 只有文件选择功能的moxie插件的大小为77k，比正常功能要小30%。为什么呢？
 
-因为moxie是一个可以自定义的前端库，如果有些功能不需要，比如silverlight，那么就可以不把它们编到目标中。 参见 “编译moxie”
+因为moxie是一个可以自定义的前端库，如果有些功能不需要，比如silverlight，那么就可以不把它们编到目标中。 参见[编译moxie](docs/compile.md)
 
 那么moxie都做了什么呢，为甚么有77k这么大（大吗？）的体积。它提供文件预览功能、图片压缩功能、国际化支持（就是i18n）等。同时，上面也提到，它解决浏览器的兼容性问题。
 
-## <a name="demo4"></a>4、上一个基础上，增加了文件上传，进度提示
+## <a name="demo4"></a>4、moxie文件上传，进度提示
 
 这个例子只使用`moxie`提供的功能，实现了**文件上传**。
 ~~~
@@ -155,7 +154,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 -rw-r--r-- ktont  staff  77782  13:58 demo4/moxie.min.js
 ~~~
 你会发现，本例中的moxie库比上一例多了4k，那是因为在编译的时候加入了XMLHttpRequest的支持。
-所以demo4中的moxie.min.js就是`plupload`库能投入生产的最精简版本。
+所以demo4中的moxie.min.js就是`plupload`库能投入生产的最精简版本。参见[编译moxie](docs/compile.md)
 
 ## <a name="demo5"></a>5、使用plupload实现了图片上传
 
@@ -205,9 +204,7 @@ $ node server.js 3000 50%
 断点续传的关键在于 －－**从文件的指定偏移处读取** (__ZHUANGBI__: c语言中fseek)
 
 但是浏览器提供给前端的功能都是受限的，没有`fseek`，而是提供了一个`slice`功能。
-
-比如，`slice(off, off+1024)`用来读取off处的1024字节数据
-
+比如，`slice(off, off+1024)`用来读取off处的1024字节数据。
 还能凑合着用吧，那我们每次读一块数据，然后发送，再读下一块，再发送。。。
 
 突然发现，这不就是失传已久的**socket编程**吗？搞一个**缓冲**，撸一串数据然后发出去，再撸一串数据再发出去。
