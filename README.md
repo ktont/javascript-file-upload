@@ -209,8 +209,9 @@ $ node server.js 3000 50%
 
 本例中使用的**块**大小是1兆字节，这个配置在`index.html`的19行
 >              chunk_size: '1mb'
+
 上图中，两个绿色框之间是一次独立的**http交互过程**，它用来发送一个**块**。
-本例中的文件一共4G，会切成4千多个块。产生4千多次http交互来发送它们。
+本例中的文件一共4G多，会切成4千多个块。产生4千多次http交互来发送它们。
 相比一次http交互发送完所有数据，这么做会有些网络性能损耗，但是它的优点很明显。
 
 * http协议是一个request/response协议。实际应用中，会对请求加上超时，服务端一般默认120秒后超时。客户端是可选的，例如XMLHttpRequest的timeout。超时后处理一般都是丢弃已经接收到的数据，而不是保存它们希望接下来对方能接着传输 --  如果这么设计的话就违背了http协议设计的初衷。http协议是一个应用层协议。http协议在**application**和**network transfer**更靠近**application**。[http协议](https://www.w3.org/Protocols/rfc2616/rfc2616-sec1.html)
