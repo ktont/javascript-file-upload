@@ -94,7 +94,15 @@ process.chdir(__dirname);
 http.createServer(function(request, response) {
   if (request.url == '/upload' && request.method.toLowerCase() == 'post') {
      console.log('post', request.url);
-     formidable(request, response);
+     var req = request;
+     req.on('readable', (chunk) => {
+         console.log('rrrrrrrrrrrrr');
+     });
+     //formidable(request, response);
+     req.resume()
+     req.on('end', () => {
+         console.log('endddddddddddd');
+     });
      return;
   }
 
