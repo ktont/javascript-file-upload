@@ -31,7 +31,7 @@ function getOffset(files) {
                 files[i].percent = percent;
                 files[i].loaded = parseInt(percent*files[i].size/100);
             }
-            resolve();
+            resolve(percent);
         };
         xhr.open('GET', '/offset');
         xhr.send();
@@ -42,31 +42,31 @@ uploader.bind('FilesAdded', function(up, files) {
     var ulRef = document.getElementById('filelist');
     plupload.each(files, function(file) {
         var liRef = document.createElement("li");
-        liRef.setAttribute('id', file.id);
-        liRef.innerHTML = `<span class="preview"></span>${file.name} <b></b>`;
+        liRef.innerText = 'Step1: select file ' + file.name;
+        ulRef.appendChild(liRef);
 
-        var img = new moxie.image.Image();
-        img.onload = function() {
-            var thumb = liRef.getElementsByClassName('preview');
-            this.embed(thumb[0], {
-                width: "50",
-                height: "50",
-                preserveHeaders: false
-            });
-        };
-        img.load(file.getSource());
+        var liRef = document.createElement("li");
+        liRef.setAttribute('id', file.id+'tip');
+        ulRef.appendChild(liRef);
 
+        var liRef = document.createElement("li");
+        liRef.setAttribute('id', file.id+'progress');
         ulRef.appendChild(liRef);
     });
     getOffset(files)
+    .then(function(percent) {
+        plupload.each(files, function(file) {
+            document.getElementById(file.id+'tip')
+            .innerText = 'Step2: get a random break-point from server: ' + percent + '%';
+        });
+    })
     .then(function() {
         up.start();
     });
 });
 uploader.bind('UploadProgress', function(up, file) {
-    document.getElementById(file.id)
-    .getElementsByTagName('b')[0]
-    .innerHTML = '<span>' + file.percent + "%</span>";
+    document.getElementById(file.id+'progress')
+    .innerText = 'Step3: upload ' + file.percent + "%";
 });
 </script>
 </body>

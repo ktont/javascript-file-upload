@@ -1,26 +1,17 @@
 /*
 $ node server.js
 or
-$ node server.js 50%
-or 
-$ node server.js 1234 50%
-                  |    |
-                  V    V
-                 port percent
+$ node server.js 1234
+                  |
+                  V 
+                 port
 */
 var http = require("http"),
     url = require("url"),
     path = require("path"),
     fs = require("fs");
 
-var port,percent;
-port = process.argv[2] || '80';
-if(port.indexOf('%') > 0) {
-    percent = port;
-    port = 80;
-}
-percent = percent || process.argv[3] || '0%';
-percent = parseInt(percent);
+var port = process.argv[2] || 80;
 
 function formidable(req, res) {
     // parse a file upload
@@ -69,6 +60,10 @@ function formidable(req, res) {
     });
 }
 
+function getRandom(start, end) {
+    return Math.floor(Math.random() * (end - start)) + start;
+}
+
 var mimeTypes = {
     "htm": "text/html",
     "html": "text/html",
@@ -92,7 +87,7 @@ http.createServer(function(request, response) {
   }
 
   if (request.url == '/offset') {
-      response.end(percent+'');
+      response.end(getRandom(100, 50)+'');
       return;
   }
 
