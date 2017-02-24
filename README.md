@@ -2,7 +2,7 @@
 
 ## 目录
 
-> [demo1 form表单，原生的上传文件](#demo1)   
+> [demo1 form表单，原生文件上传方式](#demo1)   
 > [demo2 plupload的原理](#demo2)  
 > [demo3 mOxie文件选取和文件预览](#demo3)   
 > [demo4 mOxie文件上传，进度提示](#demo4)   
@@ -44,13 +44,13 @@ __ERROR__: 如果遇到EACCES的错误，请用sudo权限运行它。
 
 $ sudo node demo1/server.js
 
-## <a name="demo1"></a>1、form表单，原生的上传文件
+## <a name="demo1"></a>1、form表单，原生文件上传方式
 
 首先，来看第一个例子。
-它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是观察http协议的格式。
+它是一个原生的文件提交方法，前端只有一段html而没有js。我们的目的是**观察**http协议。
 
 前端index.html，使用一个input标签进行文件选择，然后使用form表单发送数据。
-后端server.js（没错～后端程序也由我们编写），对表单发过来的数据进行解析，并用便于**观察**的方式打印出来。
+后端server.js，对表单发过来的数据进行解析，把协议格式打印出来。
 
 点击 选择文件 后
 
