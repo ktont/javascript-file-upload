@@ -148,7 +148,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 这个例子只使用`mOxie`提供的功能，实现了**文件上传**。
 
 ~~~
-13:36:02 1$ ll demo[3-4]/moxie.min.js
+$ ls -l demo[3-4]/moxie.min.js
 -rw-r--r-- ktont  staff  73499  13:53 demo3/moxie.min.js
 -rw-r--r-- ktont  staff  77782  13:58 demo4/moxie.min.js
 ~~~
