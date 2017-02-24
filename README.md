@@ -1,17 +1,11 @@
-# javascript文件上传详解
-
-~~~
- $ git clone https://github.com/ktont/javascript-file-upload
- $ sudo node javascript-file-upload/demo5/server.js
- open http://localhost in Chrome.
-~~~
+# JavaScript文件上传详解
 
 ## 目录
 
 > [demo1 form表单，原生的上传文件](#demo1)   
 > [demo2 plupload的原理](#demo2)  
-> [demo3 moxie文件选取和文件预览](#demo3)   
-> [demo4 moxie文件上传，进度提示](#demo4)   
+> [demo3 mOxie文件选取和文件预览](#demo3)   
+> [demo4 mOxie文件上传，进度提示](#demo4)   
 > [demo5 使用plupload实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload ui widget的示例](#demo7)   
@@ -25,7 +19,7 @@
 在运行demo的时候，请将网络速度调低，这样，我们就可以清楚的看到**http的交互过程**。
 调低网络速度的方法之一，是用chrome的debugger工具，下文会有详细的图示。
 
-~~~
+~~~bash
 windows
 下载zip文件，然后解压到c盘
 c:\> cd javascript-file-upload-master
@@ -101,7 +95,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 
 这些操作，都有个前提，就是要拿到文件。否则，一切就无从谈起。
 
-## <a name="demo3"></a>3、moxie文件选取和文件预览
+## <a name="demo3"></a>3、mOxie文件选取和文件预览
 
 这个例子没有服务端，请直接用浏览器打开 `demo3/index.html`。然后选取图片，就可以看到预览。
 这样避免你想当然的认为，预览是服务端辅助的。
@@ -113,15 +107,15 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 实际生产中，采用哪一种做法，要看需求，或者看你方便的程度。如果需求中删除图片的概率较高，那就采用本地预览－也就是本例的做法。如果服务器能存储压缩后的thumbnail，且压力不大，速度够快，那就用服务端预览。
 
 另外，
-当你看到moxie的时候，可能会觉得莫名其妙。是这样的
+当你看到mOxie的时候，可能会觉得莫名其妙。是这样的
 
 打开 http://www.plupload.com/docs/
 
 文档的最后一段话如下
-> Low-level pollyfills (mOxie) - have their own code base and documentation on GitHub.   
-> Plupload API   
-> UI Widget  
-> Queue Widget  
+> * Low-level pollyfills (mOxie)
+> * Plupload API   
+> * UI Widget  
+> * Queue Widget  
 
 其实我写本文的初衷，是为了解释这四句话。
 我跟你一样，一开始读不懂。
@@ -129,11 +123,11 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 这四句话的意思是
 `plupload`有四个安装等级 － 初级，中级，高级，长级
 
-* 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见 [编译moxie](docs/compile.md) 一节）。
-    其中提到的pollyfills应为**polyfiles**，是帮助老浏览器跟上h5步伐的插件，叫“h5垫片”，用js提升老浏览器的api，抹平浏览器间的差异。所以moxie其实是个通用前端库。
+* 初级，叫moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见 [编译mOxie](docs/compile.md) 一节）。
+    其中提到的pollyfills应为**polyfiles**，是帮助老浏览器跟上h5步伐的插件，叫“h5垫片”，用js提升老浏览器的api，抹平浏览器间的差异。所以mOxie其实是个通用前端库。
 * 中级，plupload.full.min.js，插件大小123k
       打开它看一下，发现它其实是moxie.min.js和一个叫plupload.min.js的文件合并到一起而已。
-      所以`plupload`其实是在moxie的基础上，封装了一下文件上传api，专业文件上传前端库。
+      所以`plupload`其实是在mOxie的基础上，封装了一下文件上传api，专业文件上传前端库。
 * 高级，它依赖
       jquery       137k
       jquery ui    282k
@@ -145,11 +139,11 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 那么回过头，再来看这个例子。这个例子只是演示文件选择，它没有上传的功能。
 只有文件选择功能的`mOxie`插件的大小为77k，比正常功能要小30%。为什么呢？
 
-因为`mOxie`是一个可以自定义的前端库，如果有些功能不需要，比如silverlight，那么就可以不把它们编到目标中。 参见[编译moxie](docs/compile.md)
+因为`mOxie`是一个可以自定义的前端库，如果有些功能不需要，比如silverlight，那么就可以不把它们编到目标中。 参见[编译mOxie](docs/compile.md)
 
 那么`mOxie`都做了什么呢，为甚么有77k这么大（大吗？）的体积。它提供文件预览功能、图片压缩功能、国际化支持（就是i18n）等。同时，上面也提到，它解决浏览器的兼容性问题。
 
-## <a name="demo4"></a>4、moxie文件上传，进度提示
+## <a name="demo4"></a>4、mOxie文件上传，进度提示
 
 这个例子只使用`mOxie`提供的功能，实现了**文件上传**。
 
@@ -159,7 +153,7 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 -rw-r--r-- ktont  staff  77782  13:58 demo4/moxie.min.js
 ~~~
 您会发现，本例中的`mOxie`库比上一例多了4k，那是因为在编译的时候加入了XMLHttpRequest的支持。
-所以demo4中的moxie.min.js就是`plupload`库能投入生产的最精简版本。参见[编译moxie](docs/compile.md)
+所以demo4中的moxie.min.js就是`plupload`库能投入生产的最精简版本。参见[编译mOxie](docs/compile.md)
 
 您可以在这个demo的基础上实现自己的文件上传。相比`Plupload API`，它更灵活，您可能更喜欢在这个**层次**上编写应用。当然，灵活性的对立面是复杂度，它们之间的平衡点因人而异。
 
