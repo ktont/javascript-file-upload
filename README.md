@@ -1,4 +1,4 @@
-# javascript文件上传
+# javascript文件上传详解
 
 ~~~
  $ git clone https://github.com/ktont/javascript-file-upload
