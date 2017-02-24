@@ -117,10 +117,10 @@ demo2并没有使用`plupload`，事实上它是自己实现了`plupload`，它�
 打开 http://www.plupload.com/docs/
 
 文档的最后一段话如下
-* Low-level pollyfills (mOxie) - have their own code base and documentation on GitHub.
-* Plupload API
-* UI Widget
-* Queue Widget
+> Low-level pollyfills (mOxie) - have their own code base and documentation on GitHub.
+> Plupload API
+> UI Widget
+> Queue Widget
 
 其实我写本文的初衷，是为了解释这四句话。
 我跟你一样，一开始读不懂。
