@@ -124,7 +124,7 @@ demo2并没有使用 `plupload`，事实上它是自己实现了 `plupload`，�
 这四句话的意思是
  `plupload` 有四个安装等级 － 初级，中级，高级，长级
 
-* 初级，叫 moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见 [编译mOxie](docs/compile.md) 一节）。
+* 初级，叫 moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见  [编译 mOxie](docs/compile.md) 一节）。
     其中提到的 pollyfills 应为 **polyfiles**，是帮助老浏览器跟上 h5 步伐的插件，叫 **h5 垫片**，用 js 提升老浏览器的 api，抹平浏览器间的差异。所以 mOxie 其实是个通用前端库。
 * 中级，plupload.full.min.js，插件大小123k
       打开它看一下，发现它其实是 moxie.min.js 和一个叫 plupload.min.js 的文件合并到一起而已。
@@ -140,7 +140,7 @@ demo2并没有使用 `plupload`，事实上它是自己实现了 `plupload`，�
 那么回过头，再来看这个例子。这个例子只是演示文件选择，它没有上传的功能。
 只有文件选择功能的 `mOxie` 插件的大小为77k，比正常功能要小30%。为什么呢？
 
-因为 `mOxie` 是一个可以自定义的前端库，如果有些功能不需要，比如 silverlight，那么就可以不把它们编到目标中。 参见[编译mOxie](docs/compile.md)
+因为 `mOxie` 是一个可以自定义的前端库，如果有些功能不需要，比如 silverlight，那么就可以不把它们编到目标中。 参见 [编译 mOxie](docs/compile.md)
 
 那么 `mOxie` 都做了什么呢，为甚么有77k这么大（大吗？）的体积。它提供文件预览功能、图片压缩功能、国际化支持（就是 i18n ）等。同时，上面也提到，它解决浏览器的兼容性问题。
 
@@ -154,7 +154,7 @@ $ ls -l demo[3-4]/moxie.min.js
 -rw-r--r-- ktont  staff  77782  13:58 demo4/moxie.min.js
 ~~~
 您会发现，本例中的 `mOxie` 库比上一例多了4k，那是因为在编译的时候加入了 XMLHttpRequest 的支持。
-所以 demo4 中的 moxie.min.js 就是 `plupload` 库能投入生产的最精简版本。参见[编译mOxie](docs/compile.md)
+所以 demo4 中的 moxie.min.js 就是 `plupload` 库能投入生产的最精简版本。参见 [编译 mOxie](docs/compile.md)
 
 您可以在这个 demo 的基础上实现自己的文件上传。相比 `Plupload API`，它更灵活，您可能更喜欢在这个**层次**上编写应用。当然，灵活性的对立面是复杂度，它们之间的平衡点因人而异。
 
