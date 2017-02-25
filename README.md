@@ -33,7 +33,7 @@ $ sudo node demo1/server.js
 $ sudo node demo2/server.js
 ~~~
 
-然后在浏览器中(建议chrome)打开 [http://localhost](http://localhost)
+然后在浏览器中(建议 chrome)打开 [http://localhost](http://localhost)
 
 __ERROR__: 如果你遇到 EADDRINUSE 的错误，那是因为80端口已经被其它诸如 apache、nginx 的进程占用了。
 可以在启动的时候指定端口, 比如端口3000。
