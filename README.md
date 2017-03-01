@@ -1,5 +1,10 @@
 # JavaScript文件上传详解
 
+~~~sh
+git clone https://github.com/ktont/javascript-file-upload
+node javascript-file-upload/demo6/server.js
+~~~
+
 ## 目录
 
 > [demo1 form 表单，原生的文件上传方式](#demo1)   
