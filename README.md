@@ -125,7 +125,7 @@ demo2并没有使用 `plupload`，事实上它是自己实现了 `plupload`，�
  `plupload` 有四个安装等级 － 初级，中级，高级，长级
 
 * 初级，叫 moxie.min.js，插件大小77k到106k不等（神马鬼？为什么不等的原因参见  [编译 mOxie](docs/compile.md) 一节）。
-    其中提到的 pollyfills 应为 **polyfiles**，是帮助老浏览器跟上 h5 步伐的插件，叫 **h5 垫片**，用 js 提升老浏览器的 api，抹平浏览器间的差异。所以 mOxie 其实是个通用前端库。
+    其中提到的 pollyfills 应为 **polyfills**，是帮助老浏览器跟上 h5 步伐的插件，叫 **h5 垫片**，用 js 提升老浏览器的 api，抹平浏览器间的差异。所以 mOxie 其实是个通用前端库。
 * 中级，plupload.full.min.js，插件大小123k
       打开它看一下，发现它其实是 moxie.min.js 和一个叫 plupload.min.js 的文件合并到一起而已。
       所以 `plupload` 其实是在 mOxie 的基础上，封装了一下文件上传 api，专业文件上传前端库。
