@@ -8,16 +8,20 @@
     <img id="image" />
     <script>
         window.onload = function() {
+            var output = document.getElementById("output");
             document.getElementById("picker").onchange = function () {
                 var file = this.files[0];
+                output.innerText = '';
+                if(file.size > 1024*1024) {
+                    output.innerText = 'file size great than 1M';
+                    return;
+                }
                 var xhr = new XMLHttpRequest();
                 xhr.onload = function(d) {
-                    document.getElementById("output")
-                    .innerText = d.currentTarget.response;
+                    output..innerText = d.currentTarget.response;
                 };
                 xhr.onerror = function(err) {
-                    document.getElementById("output")
-                    .innerText = 'error';
+                    output.innerText = 'fail:' + err.toString();
                 };
                 xhr.open('POST', '/upload');
                 var fd = new window.FormData();
