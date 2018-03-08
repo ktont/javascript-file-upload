@@ -217,7 +217,7 @@ retry 首先询问服务端**上次的断点**，然后从该断点处继续发�
 。因为如果不关闭，网络中残留的数据可能继续写入文件，导致数据错乱。 
 服务端一般请求间是无法操作的，一个请求不能操作其它请求。
 
-<img src="img/6.4.png" width="500" />
+<img src="img/6.4.jpg" width="500" />
 
 虽然，实际上几乎不会出现上面的情况，但是它不严谨。并且，
 http 协议是一个应用层协议。http 协议在 **application** 和 **network transfer** 更靠近 **application**。大多数 http 服务器都会帮你做封包的拼解工作，而让你从网络层传输层解放出来。如果达不到这一点，http 的处理还是和 tcp 一样麻烦，那 http 就不应该存在。[参考 http协议](https://www.w3.org/Protocols/rfc2616/rfc2616-sec1.html)
