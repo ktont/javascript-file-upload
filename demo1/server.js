@@ -91,14 +91,30 @@ var virtualDirectories = {
 
 process.chdir(__dirname);
 
-http.createServer(function(request, response) {
-  if (request.url == '/upload' && request.method.toLowerCase() == 'post') {
-     console.log('post', request.url);
-     formidable(request, response);
+http.createServer(function(req, res) {
+  if(req.url == '/upload' && req.method.toLowerCase() == 'post') {
+     console.log('post', req.url);
+     formidable(req, res);
      return;
   }
 
-  var uri = url.parse(request.url).pathname
+  if(req.url == '/big') {
+    res.setHeader('Content-Length', "4423129088");
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename=CentOS-6.2.ios`);
+    fs.createReadStream('/Users/zhi.liang/Downloads/CentOS-6.2-x86_64-bin-DVD1.iso').pipe(res);
+    return;
+  }
+
+  if(req.url == '/small') {
+    res.setHeader('Content-Length', "6393");
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename=etc.passwd.txt`);
+    fs.createReadStream('/etc/passwd').pipe(res);
+    return;
+  }
+
+  var uri = url.parse(req.url).pathname
     , filename = path.join(process.cwd(), uri)
     , root = uri.split("/")[1]
     , virtualDirectory;
@@ -111,9 +127,9 @@ http.createServer(function(request, response) {
 
   fs.exists(filename, function(exists) {
     if(!exists) {
-      response.writeHead(404, {"Content-Type": "text/plain"});
-      response.write("404 Not Found\n");
-      response.end();
+      res.writeHead(404, {"Content-Type": "text/plain"});
+      res.write("404 Not Found\n");
+      res.end();
       console.error('404: ' + filename);
       return;
     }
@@ -122,17 +138,17 @@ http.createServer(function(request, response) {
 
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
-        response.writeHead(500, {"Content-Type": "text/plain"});
-        response.write(err + "\n");
-        response.end();
+        res.writeHead(500, {"Content-Type": "text/plain"});
+        res.write(err + "\n");
+        res.end();
         console.error('500: ' + filename);
         return;
       }
 
       var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
-      response.writeHead(200, {"Content-Type": mimeType});
-      response.write(file, "binary");
-      response.end();
+      res.writeHead(200, {"Content-Type": mimeType});
+      res.write(file, "binary");
+      res.end();
       console.log('200: ' + filename + ' as ' + mimeType);
     });
   });

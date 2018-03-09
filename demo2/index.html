@@ -18,7 +18,7 @@
                 }
                 var xhr = new XMLHttpRequest();
                 xhr.onload = function(d) {
-                    output..innerText = d.currentTarget.response;
+                    output.innerText = d.currentTarget.response;
                 };
                 xhr.onerror = function(err) {
                     output.innerText = 'fail:' + err.toString();
