@@ -163,6 +163,20 @@ $ ls -l demo[3-4]/moxie.min.js
 
 您可以在这个 demo 的基础上实现自己的文件上传。相比 `Plupload API`，它更灵活，您可能更喜欢在这个**层次**上编写应用。当然，灵活性的对立面是复杂度，它们之间的平衡点因人而异。
 
+### 怎么判断文件上传成功？
+
+- 无论上传成功或者失败，结束时都会触发 loadend 事件
+- 如果上传过程中服务器崩溃，那么 loadend 事件的附加值 info.status 为 0。也可以根据 xhr.status 为 0 
+- 如果上传过程中用户 abort，那么结果将依赖于服务器的处理。服务器有可能返回成功也可能返回失败。
+- 如果上传过程中网络中断或者超时，那么 那么 loadend 事件的附加值 info.status 为 0。也可以根据 xhr.status 为 0 
+- 如果服务器返回的值 info.status == 200，则说明上传成功。否则，失败
+
+NOTE: 关于 abort
+
+这似乎是一个bug，因为当用户主动 abort 时，并没有触发 abort 事件。
+所以你要想正确的 abort 那么就要注意了。手工 abort() 后，要标记失败了。
+最好用 Promise，abort() 后，立即返回 reject()
+
 ## <a name="demo5"></a>5、使用plupload实现了图片上传
 
 这个例子，比较实际一点，使用 `Plupload API`。`Plupload API` 主要在 `mOxie` 上实现一套事件驱动的机制。

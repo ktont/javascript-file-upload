@@ -61,12 +61,15 @@ function formidable(req, res) {
         }
     }).on('end',function() {
         console.log('total:', total);
+        //res.statusCode = 404;
+        //res.end('not fonddound');
         res.end(`<head>
             <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
             </head>
             <body><p>${cont}</p>
             <p>total: ${total}</p>
             </body>`);
+        
     });
 }
 

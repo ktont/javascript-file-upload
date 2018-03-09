@@ -36,6 +36,19 @@
                 parseInt(stat.loaded*100/stat.total)+'%'
             ].join(' ');
             document.body.appendChild(p);
+
+            // setTimeout(function() {
+            //     xhr.abort();
+            // }, 100);
+        });
+        xhr.addEventListener('loadend', function(ret) {
+            console.log('loadend response code', xhr.status);
+            console.log('loadend response body', xhr.responseText);
+            console.log('loadend event', ret);
+        });
+
+        xhr.addEventListener('abort', function(ret) {
+            console.log('aborted', ret);
         });
    }
 
