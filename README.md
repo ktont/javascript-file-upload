@@ -298,7 +298,7 @@ node demo8/client.js
 得找一个大文件才能看出效果
 ```
 
-这两个小技术，用 stream 的一些 api 就能搞定。
+这两个小技术，用 stream 就能搞定。
 
 nodejs上传显示进度，用 readable stream 的 data 事件
 服务端限速 用 readable stream 的 once() pause() resume()，实现有些精巧，自己去看吧。它每秒限定 64k。调整 timer 可以实现任意速率限速。
