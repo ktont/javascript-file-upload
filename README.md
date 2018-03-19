@@ -14,7 +14,7 @@ node javascript-file-upload/demo6/server.js
 > [demo5 使用 plupload 实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload 之 Ui Widget 的示例](#demo7)   
-> [demo8 服务端限速](#demo8)    
+> [demo8 服务端限速](#demo8)    
 > [总结](#end)   
 
 本教程包含7个 demo，它们循序渐进、由浅入深地讲解**文件上传**。每个 demo 都被精心设计，都是可执行的。
@@ -287,7 +287,7 @@ plupload 会在这个 div 中，自动**安插**一个 ui 组件，就是图片�
 * 上传失败后可以重传
 * 页面大小控制在100k以内
 
-## <a name="demo8"></a>8、nodejs上传显示进度、服务端限速
+## <a name="demo8"></a>8、nodejs上传显示进度、服务端限速
 
 本示例研究了两个小技术
 * nodejs上传显示进度 
