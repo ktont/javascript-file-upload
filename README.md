@@ -14,7 +14,8 @@ node javascript-file-upload/demo6/server.js
 > [demo5 使用 plupload 实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload 之 Ui Widget 的示例](#demo7)   
-> [demo8 服务端限速](#demo8)    
+> [demo8 服务端限速](#demo8)   
+> [demo9 FAQ 批量上传的时候，如何为每个文件添加一个id](#demo9)     
 > [总结](#end)   
 
 本教程包含7个 demo，它们循序渐进、由浅入深地讲解**文件上传**。每个 demo 都被精心设计，都是可执行的。
@@ -302,6 +303,20 @@ node demo8/client.js
 
 nodejs上传显示进度，用 readable stream 的 data 事件
 服务端限速 用 readable stream 的 once() pause() resume()，实现有些精巧，自己去看吧。它每秒限定 64k。调整 timer 可以实现任意速率限速。
+
+## <a name="demo8"></a>9、FAQ 批量上传的时候，如何为每个文件添加一个id
+
+这是个真实的案例。
+
+有人问我如何实现下面两点：
+- 批量上传的时候，如何为每个文件添加一个uuid
+- 如果文件小于 10M，则没有必要分块传输
+
+这两个问题是同一个问题。答案很简单。
+
+使用 plupload 的 BeforeUpload 事件 和 setOption 方法
+
+<img src="img/9.png" width="400">
 
 ## <a name="end"></a>总结
 

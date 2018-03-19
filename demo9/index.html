@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo 9</title>
+</head>
+<body>
+
+<ul id="filelist"></ul>
+
+<div id="container">
+    <a id="file-picker" href="javascript:;">Browse...</a>
+</div>
+
+<script src="plupload.full.min.js"></script>
+<script>
+var uploader = new plupload.Uploader({
+    browse_button: 'file-picker',
+    url: '/upload',
+});
+
+uploader.init();
+
+uploader.bind('BeforeUpload', function(up, file) {
+    up.setOption('multipart_params', {
+        uuid: Math.random().toString().slice(2)
+    });
+    up.setOption('chunk_size', file.size > 10*1024*1024 ? '1mb' : '0');
+});
+
+uploader.bind('FilesAdded', function(up, files) {
+    var ulRef = document.getElementById('filelist');
+    plupload.each(files, function(file) {
+        var liRef = document.createElement("li");
+        liRef.setAttribute('id', file.id+'progress');
+        ulRef.appendChild(liRef);
+    });
+    up.start();
+});
+
+uploader.bind('UploadProgress', function(up, file) {
+    document.getElementById(file.id+'progress')
+    .innerText = `upload ${file.name} ${file.percent}%`;
+});
+</script>
+</body>
+</html>
