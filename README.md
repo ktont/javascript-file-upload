@@ -14,6 +14,7 @@ node javascript-file-upload/demo6/server.js
 > [demo5 使用 plupload 实现了图片上传](#demo5)   
 > [demo6 断点续传](#demo6)   
 > [demo7 plupload 之 Ui Widget 的示例](#demo7)   
+> [demo8 服务端限速](#demo8)    
 > [总结](#end)   
 
 本教程包含7个 demo，它们循序渐进、由浅入深地讲解**文件上传**。每个 demo 都被精心设计，都是可执行的。
@@ -105,6 +106,8 @@ demo2并没有使用 `plupload`，事实上它是自己实现了 `plupload`，�
 
 这个例子没有服务端，请直接用浏览器打开 `demo3/index.html`。然后选取图片，就可以看到预览。
 这样避免你想当然的认为，预览是服务端辅助的。
+
+NOTE: h5 是无法直接在 img 标签中嵌入本地图片预览的。本例使用 canvas 在页面上画出缩略图。
 
 <img src="img/3.1.png" width="500">
 
@@ -283,6 +286,22 @@ plupload 会在这个 div 中，自动**安插**一个 ui 组件，就是图片�
 * 可以删除节点
 * 上传失败后可以重传
 * 页面大小控制在100k以内
+
+## <a name="demo8"></a>8、nodejs上传显示进度、服务端限速
+
+本示例研究了两个小技术
+* nodejs上传显示进度 
+* 服务端限速
+
+```
+node demo8/client.js
+得找一个大文件才能看出效果
+```
+
+这两个小技术，用 stream 的一些 api 就能搞定。
+
+nodejs上传显示进度，用 readable stream 的 data 事件
+服务端限速 用 readable stream 的 once() pause() resume()，实现有些精巧，自己去看吧。它每秒限定 64k。调整 timer 可以实现任意速率限速。
 
 ## <a name="end"></a>总结
 
