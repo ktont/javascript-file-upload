@@ -304,6 +304,12 @@ node demo8/client.js
 nodejs上传显示进度，用 readable stream 的 data 事件
 服务端限速 用 readable stream 的 once() pause() resume()，实现有些精巧，自己去看吧。它每秒限定 64k。调整 timer 可以实现任意速率限速。
 
+另外，demo8/client.js 研究了 github.com/request/request 库如何 abort 一次上传
+
+在控制台直接输入几个回车，然后输入 abort ，就会 abort 这次上传。如图：
+
+<img src="img/8.png" width="400">
+
 ## <a name="demo9"></a>9、FAQ 批量上传的时候，如何为每个文件添加一个id
 
 这是个真实的案例。
