@@ -22,6 +22,7 @@ var http = require("http"),
     port = process.argv[2] || 80;
 
 function formidable(req, res) {
+    req.setMaxListeners(0);
     // parse a file upload
     var total = 0;
     (function scan(n) {
