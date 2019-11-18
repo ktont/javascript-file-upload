@@ -16,9 +16,9 @@ var port = process.argv[2] || 80;
 function formidable(req, res) {
     // parse a file upload
     var expect = 'sp';
+    var begin = new Date();
     var sp, cont, type, total = 0;
     req.on('data', function(tr) {
-        //console.log('trunk:', tr, tr.toString());
         while(1) {
             switch(expect) {
                 case 'sp':
@@ -26,13 +26,13 @@ function formidable(req, res) {
                     if(idx == -1) return;
                     sp = tr.slice(0, idx).toString();
                     tr = tr.slice(idx+2);
-                    console.log(sp);
+                    console.log('sp:', sp);
                     expect = 'content';
                     break;
                 case 'content':
                     var idx = tr.indexOf('\r\n');
                     cont = tr.slice(0, idx).toString();
-                    console.log(cont);
+                    console.log('content:', cont);
                     if(/Content-Disposition: ?form-data;.*filename="/.test(cont)) {
                         expect = 'type';
                         tr = tr.slice(idx+2);
@@ -45,7 +45,7 @@ function formidable(req, res) {
                     var idx = tr.indexOf('\r\n');
                     value = tr.slice(0, idx).toString();
                     tr = tr.slice(idx+2);
-                    console.log(value);
+                    console.log('value:', value);
                     expect = 'sp';
                     break;
                 case 'type':
@@ -66,11 +66,14 @@ function formidable(req, res) {
         }
     }).on('end',function() {
         console.log('\ntotal:', total);
+        var spendTm = new Date() - begin;
         res.end(`<head>
-            <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+            <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
             </head>
             <body><p>${cont}</p>
             <p>total: ${total}</p>
+            <p>upload speed: ${parseInt((total*8)/(spendTm/1000))} bps</p>
+            <p>upload speed: ${parseInt((total/1024/1024)/(spendTm/1000))} Mbyte per second</p>
             </body>`);
     });
 }
